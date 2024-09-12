@@ -3,7 +3,8 @@ import { ShopContext } from "../context/ShopContext";
 import Titles from "../components/Titles";
 import { assets } from "../assets/assets";
 const Cart = () => {
-  const { products, currency, cartItems } = useContext(ShopContext);
+  const { products, currency, cartItems, updateQuantity } =
+    useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ const Cart = () => {
                 defaultValue={item.quantity}
               />
               <img
+                onClick={() => updateQuantity(item._id, item.size, 0)}
                 className="w-4 mr-4 sm:w-5 cursor-pointer "
                 src={assets.bin_icon}
                 alt=""
