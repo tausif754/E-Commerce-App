@@ -3,6 +3,8 @@ import cors from "cors";
 import { config } from "dotenv";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
+import userModel from "./models/userModel.js";
+import userRouter from "./routes/userRouter.js";
 
 // App Config
 config({ path: "./config/.env" });
@@ -18,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 // api endpoints
+app.use("/api/user", userRouter);
 
 app.get("/", (req, res) => {
   res.send("API working");
